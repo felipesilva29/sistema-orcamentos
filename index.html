@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -78,20 +77,6 @@
         .btn-secondary:hover {
             background-color: #d1d5db;
         }
-        .btn-success {
-            background-color: #10b981;
-            color: white;
-        }
-        .btn-success:hover {
-            background-color: #059669;
-        }
-        .btn-danger {
-            background-color: #ef4444;
-            color: white;
-        }
-        .btn-danger:hover {
-            background-color: #dc2626;
-        }
         .badge {
             padding: 4px 8px;
             border-radius: 9999px;
@@ -141,26 +126,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .close:hover {
-            color: black;
-        }
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-        .tab.active {
-            border-bottom: 2px solid #6366f1;
-            color: #6366f1;
-            font-weight: 600;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px 0;
-        }
-        .tab-content.active {
-            display: block;
-        }
         .form-group {
             margin-bottom: 15px;
         }
@@ -174,168 +139,38 @@
             padding: 8px 12px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
-            font-size: 14px;
-        }
-        .form-control:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-        .form-select {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            font-size: 14px;
-            background-color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
     <div class="sidebar">
         <div class="p-4">
             <h1 class="text-xl font-bold mb-6">Criativa Mais Cultura</h1>
-            <div class="nav-item active" onclick="showSection('dashboard')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                </svg>
-                Dashboard
-            </div>
-            <div class="nav-item" onclick="showSection('orcamentos')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
-                </svg>
-                Orçamentos
-            </div>
-            <div class="nav-item" onclick="showSection('eventos')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                </svg>
-                Eventos
-            </div>
-            <div class="nav-item" onclick="showSection('relatorios')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                Relatórios
-            </div>
+            <div class="nav-item active" onclick="showSection('dashboard')">Dashboard</div>
+            <div class="nav-item" onclick="showSection('orcamentos')">Orçamentos</div>
+            <div class="nav-item" onclick="showSection('eventos')">Eventos</div>
+            <div class="nav-item" onclick="showSection('relatorios')">Relatórios</div>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="content">
-        <!-- Dashboard Section -->
         <div id="dashboard" class="section">
-            <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div class="card bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-                    <h3 class="text-lg font-semibold mb-2">Total de Orçamentos</h3>
-                    <p class="text-3xl font-bold">12</p>
-                    <p class="text-sm opacity-80">4 em elaboração, 6 aprovados, 2 finalizados</p>
-                </div>
-                <div class="card bg-gradient-to-r from-emerald-500 to-teal-600 text-white">
-                    <h3 class="text-lg font-semibold mb-2">Receitas Previstas</h3>
-                    <p class="text-3xl font-bold">R$ 245.000,00</p>
-                    <p class="text-sm opacity-80">+15% em relação ao mês anterior</p>
-                </div>
-                <div class="card bg-gradient-to-r from-amber-500 to-orange-600 text-white">
-                    <h3 class="text-lg font-semibold mb-2">Despesas Aprovadas</h3>
-                    <p class="text-3xl font-bold">R$ 187.350,00</p>
-                    <p class="text-sm opacity-80">76% das receitas previstas</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="card">
-                    <h3 class="text-lg font-semibold mb-4">Orçamentos Recentes</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Orçamento</th>
-                                <th>Evento</th>
-                                <th>Status</th>
-                                <th>Saldo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Festival de Verão 2023</td>
-                                <td>Festival de Verão</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td class="text-emerald-600">R$ 15.400,00</td>
-                            </tr>
-                            <tr>
-                                <td>Exposição Arte Moderna</td>
-                                <td>Exposição Anual</td>
-                                <td><span class="badge badge-pending">Em Elaboração</span></td>
-                                <td class="text-emerald-600">R$ 8.750,00</td>
-                            </tr>
-                            <tr>
-                                <td>Workshop de Dança</td>
-                                <td>Série Workshops</td>
-                                <td><span class="badge badge-completed">Finalizado</span></td>
-                                <td class="text-emerald-600">R$ 3.200,00</td>
-                            </tr>
-                            <tr>
-                                <td>Feira Gastronômica</td>
-                                <td>Feiras Culturais</td>
-                                <td><span class="badge badge-pending">Em Elaboração</span></td>
-                                <td class="text-red-600">-R$ 1.800,00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card">
-                    <h3 class="text-lg font-semibold mb-4">Análise Financeira</h3>
-                    <canvas id="financialChart" height="250"></canvas>
-                </div>
-            </div>
-        </div>
+             <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+             </div>
 
-        <!-- Orçamentos Section -->
         <div id="orcamentos" class="section hidden">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Orçamentos</h2>
-                <button class="btn btn-primary" onclick="openModal('novoOrcamentoModal')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                    Novo Orçamento
-                </button>
+                <button class="btn btn-primary" onclick="openModal('novoOrcamentoModal')">Novo Orçamento</button>
             </div>
             <div class="card mb-6">
-                <div class="flex flex-wrap gap-4 mb-4">
-                    <div class="flex-1">
-                        <input type="text" placeholder="Buscar orçamentos..." class="form-control" id="searchOrcamentos">
-                    </div>
-                    <div>
-                        <select class="form-select" id="filterEvento">
-                            <option value="">Todos os Eventos</option>
-                            <option value="1">Festival de Verão</option>
-                            <option value="2">Exposição Anual</option>
-                            <option value="3">Série Workshops</option>
-                            <option value="4">Feiras Culturais</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select class="form-select" id="filterStatus">
-                            <option value="">Todos os Status</option>
-                            <option value="elaboracao">Em Elaboração</option>
-                            <option value="aprovado">Aprovado</option>
-                            <option value="finalizado">Finalizado</option>
-                            <option value="cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="overflow-x-auto">
                     <table id="orcamentosTable">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nome do Orçamento</th>
-                                <th>Evento</th>
                                 <th>Responsável</th>
-                                <th>Data de Criação</th>
                                 <th>Receitas</th>
                                 <th>Despesas</th>
                                 <th>Saldo</th>
@@ -343,175 +178,21 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Festival de Verão 2023</td>
-                                <td>Festival de Verão</td>
-                                <td>Ana Silva</td>
-                                <td>15/01/2023</td>
-                                <td>R$ 85.000,00</td>
-                                <td>R$ 69.600,00</td>
-                                <td class="text-emerald-600">R$ 15.400,00</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(1)">Ver</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Exposição Arte Moderna</td>
-                                <td>Exposição Anual</td>
-                                <td>Carlos Mendes</td>
-                                <td>03/02/2023</td>
-                                <td>R$ 42.000,00</td>
-                                <td>R$ 33.250,00</td>
-                                <td class="text-emerald-600">R$ 8.750,00</td>
-                                <td><span class="badge badge-pending">Em Elaboração</span></td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(2)">Ver</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Workshop de Dança</td>
-                                <td>Série Workshops</td>
-                                <td>Juliana Costa</td>
-                                <td>22/02/2023</td>
-                                <td>R$ 12.500,00</td>
-                                <td>R$ 9.300,00</td>
-                                <td class="text-emerald-600">R$ 3.200,00</td>
-                                <td><span class="badge badge-completed">Finalizado</span></td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(3)">Ver</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Feira Gastronômica</td>
-                                <td>Feiras Culturais</td>
-                                <td>Roberto Alves</td>
-                                <td>10/03/2023</td>
-                                <td>R$ 28.000,00</td>
-                                <td>R$ 29.800,00</td>
-                                <td class="text-red-600">-R$ 1.800,00</td>
-                                <td><span class="badge badge-pending">Em Elaboração</span></td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(4)">Ver</button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="orcamentosTableBody">
+                            </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- Eventos Section -->
         <div id="eventos" class="section hidden">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Eventos</h2>
-                <button class="btn btn-primary" onclick="openModal('novoEventoModal')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                    Novo Evento
-                </button>
+            <h2 class="text-2xl font-bold mb-6">Eventos</h2>
             </div>
-            <div class="card">
-                <div class="mb-4">
-                    <input type="text" placeholder="Buscar eventos..." class="form-control" id="searchEventos">
-                </div>
-                <table id="eventosTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome do Evento</th>
-                            <th>Data de Início</th>
-                            <th>Data de Término</th>
-                            <th>Local</th>
-                            <th>Orçamentos</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Festival de Verão</td>
-                            <td>15/07/2023</td>
-                            <td>20/07/2023</td>
-                            <td>Parque Municipal</td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm" onclick="editEvento(1)">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Exposição Anual</td>
-                            <td>10/09/2023</td>
-                            <td>25/09/2023</td>
-                            <td>Galeria Central</td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm" onclick="editEvento(2)">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Série Workshops</td>
-                            <td>05/03/2023</td>
-                            <td>30/11/2023</td>
-                            <td>Centro Cultural</td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm" onclick="editEvento(3)">Editar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Feiras Culturais</td>
-                            <td>12/04/2023</td>
-                            <td>15/04/2023</td>
-                            <td>Praça Central</td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm" onclick="editEvento(4)">Editar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Relatórios Section -->
         <div id="relatorios" class="section hidden">
             <h2 class="text-2xl font-bold mb-6">Relatórios</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="card">
-                    <h3 class="text-lg font-semibold mb-4">Despesas por Categoria</h3>
-                    <canvas id="expenseCategoryChart" height="300"></canvas>
-                </div>
-                <div class="card">
-                    <h3 class="text-lg font-semibold mb-4">Orçamentos por Status</h3>
-                    <canvas id="budgetStatusChart" height="300"></canvas>
-                </div>
             </div>
-            <div class="card mt-6">
-                <h3 class="text-lg font-semibold mb-4">Análise de Margem de Lucro</h3>
-                <div class="mb-4">
-                    <select class="form-select" id="profitMarginFilter">
-                        <option value="all">Todos os Orçamentos</option>
-                        <option value="approved">Apenas Aprovados</option>
-                        <option value="completed">Apenas Finalizados</option>
-                    </select>
-                </div>
-                <canvas id="profitMarginChart" height="250"></canvas>
-            </div>
-        </div>
     </div>
 
-    <!-- Modals -->
-    <!-- Novo Orçamento Modal -->
     <div id="novoOrcamentoModal" class="modal">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-4">
@@ -522,36 +203,21 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="form-group">
                         <label class="form-label">Nome do Orçamento</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Evento</label>
-                        <select class="form-select" required>
-                            <option value="">Selecione um evento</option>
-                            <option value="1">Festival de Verão</option>
-                            <option value="2">Exposição Anual</option>
-                            <option value="3">Série Workshops</option>
-                            <option value="4">Feiras Culturais</option>
-                            <option value="0">Sem evento vinculado</option>
-                        </select>
+                        <input type="text" id="formNome" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Responsável</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" id="formResponsavel" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Status</label>
-                        <select class="form-select" required>
+                        <select id="formStatus" class="form-control" required>
                             <option value="elaboracao">Em Elaboração</option>
                             <option value="aprovado">Aprovado</option>
                             <option value="finalizado">Finalizado</option>
                             <option value="cancelado">Cancelado</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Descrição</label>
-                    <textarea class="form-control" rows="3"></textarea>
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('novoOrcamentoModal')">Cancelar</button>
@@ -560,512 +226,114 @@
             </form>
         </div>
     </div>
-
-    <!-- Novo Evento Modal -->
-    <div id="novoEventoModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Novo Evento</h2>
-                <span class="close" onclick="closeModal('novoEventoModal')">&times;</span>
-            </div>
-            <form id="novoEventoForm">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="form-group">
-                        <label class="form-label">Nome do Evento</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Local</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Data de Início</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Data de Término</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Descrição</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('novoEventoModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Detalhes do Orçamento Modal -->
-    <div id="detalhesOrcamentoModal" class="modal">
-        <div class="modal-content" style="max-width: 90%;">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Detalhes do Orçamento: <span id="orcamentoTitle">Festival de Verão 2023</span></h2>
-                <span class="close" onclick="closeModal('detalhesOrcamentoModal')">&times;</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div class="card bg-white">
-                    <h3 class="text-lg font-semibold mb-2">Informações Gerais</h3>
-                    <p><strong>Evento:</strong> <span id="orcamentoEvento">Festival de Verão</span></p>
-                    <p><strong>Responsável:</strong> <span id="orcamentoResponsavel">Ana Silva</span></p>
-                    <p><strong>Data de Criação:</strong> <span id="orcamentoData">15/01/2023</span></p>
-                    <p><strong>Status:</strong> <span id="orcamentoStatus" class="badge badge-approved">Aprovado</span></p>
-                </div>
-                <div class="card bg-white">
-                    <h3 class="text-lg font-semibold mb-2">Resumo Financeiro</h3>
-                    <p><strong>Total de Receitas:</strong> <span id="orcamentoReceitas" class="text-emerald-600">R$ 85.000,00</span></p>
-                    <p><strong>Total de Despesas:</strong> <span id="orcamentoDespesas" class="text-red-600">R$ 69.600,00</span></p>
-                    <p><strong>Saldo:</strong> <span id="orcamentoSaldo" class="text-emerald-600">R$ 15.400,00</span></p>
-                    <p><strong>Margem de Lucro:</strong> <span id="orcamentoMargem">18,12%</span></p>
-                </div>
-                <div class="card bg-white">
-                    <h3 class="text-lg font-semibold mb-2">Ações</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="btn btn-primary" onclick="editOrcamento()">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                            </svg>
-                            Editar
-                        </button>
-                        <button class="btn btn-success" id="btnAprovarOrcamento">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            Aprovar
-                        </button>
-                        <button class="btn btn-secondary" id="btnFinalizarOrcamento">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
-                            </svg>
-                            Finalizar
-                        </button>
-                        <button class="btn btn-danger" id="btnCancelarOrcamento">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                            Cancelar
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-6">
-                <div class="flex border-b">
-                    <div class="tab active" data-tab="receitas">Receitas</div>
-                    <div class="tab" data-tab="despesas">Despesas</div>
-                    <div class="tab" data-tab="analise">Análise</div>
-                </div>
-                <div id="receitasTab" class="tab-content active">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">Receitas</h3>
-                        <button class="btn btn-primary" onclick="openModal('novaReceitaModal')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                            </svg>
-                            Nova Receita
-                        </button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Fonte</th>
-                                <th>Valor Previsto</th>
-                                <th>Data de Cadastro</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Patrocínio Principal</td>
-                                <td>Empresa XYZ</td>
-                                <td>R$ 50.000,00</td>
-                                <td>15/01/2023</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Excluir</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Venda de Ingressos</td>
-                                <td>Bilheteria</td>
-                                <td>R$ 25.000,00</td>
-                                <td>15/01/2023</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Excluir</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Concessão de Alimentação</td>
-                                <td>Food Trucks</td>
-                                <td>R$ 10.000,00</td>
-                                <td>16/01/2023</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Excluir</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2" class="text-right font-bold">Total:</td>
-                                <td class="font-bold text-emerald-600">R$ 85.000,00</td>
-                                <td colspan="2"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div id="despesasTab" class="tab-content">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">Despesas</h3>
-                        <button class="btn btn-primary" onclick="openModal('novaDespesaModal')">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                            </svg>
-                            Nova Despesa
-                        </button>
-                    </div>
-                    <div class="mb-4">
-                        <select class="form-select" id="filterDespesaCategoria">
-                            <option value="">Todas as Categorias</option>
-                            <option value="equipe">Equipe</option>
-                            <option value="materiais">Materiais</option>
-                            <option value="viagens">Viagens</option>
-                            <option value="servicos">Serviços</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Categoria</th>
-                                <th>Valor Previsto</th>
-                                <th>Status</th>
-                                <th>Data Autorizada</th>
-                                <th>Forma de Pagamento</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Contratação de Artistas</td>
-                                <td>Equipe</td>
-                                <td>R$ 35.000,00</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td>20/01/2023</td>
-                                <td>Parcelado</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="openModal('aprovarDespesaModal')">Detalhes</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Aluguel de Equipamentos</td>
-                                <td>Materiais</td>
-                                <td>R$ 15.000,00</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td>22/01/2023</td>
-                                <td>À vista</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="openModal('aprovarDespesaModal')">Detalhes</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Segurança</td>
-                                <td>Serviços</td>
-                                <td>R$ 8.000,00</td>
-                                <td><span class="badge badge-pending">Pendente</span></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm" onclick="openModal('aprovarDespesaModal')">Aprovar</button>
-                                    <button class="btn btn-danger btn-sm">Cancelar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hospedagem de Convidados</td>
-                                <td>Viagens</td>
-                                <td>R$ 6.500,00</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td>25/01/2023</td>
-                                <td>Faturado</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="openModal('aprovarDespesaModal')">Detalhes</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Marketing e Divulgação</td>
-                                <td>Serviços</td>
-                                <td>R$ 5.100,00</td>
-                                <td><span class="badge badge-approved">Aprovado</span></td>
-                                <td>18/01/2023</td>
-                                <td>PIX</td>
-                                <td>
-                                    <button class="btn btn-secondary btn-sm" onclick="openModal('aprovarDespesaModal')">Detalhes</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2" class="text-right font-bold">Total:</td>
-                                <td class="font-bold text-red-600">R$ 69.600,00</td>
-                                <td colspan="4"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div id="analiseTab" class="tab-content">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-4">Distribuição de Despesas</h3>
-                            <canvas id="despesasDistribuicaoChart" height="300"></canvas>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-4">Receitas vs Despesas</h3>
-                            <canvas id="receitasDespesasChart" height="300"></canvas>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <h3 class="text-lg font-semibold mb-4">Análise de Fluxo Financeiro</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Métrica</th>
-                                    <th>Valor</th>
-                                    <th>Análise</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Margem de Lucro</td>
-                                    <td>18,12%</td>
-                                    <td><span class="text-emerald-600">Acima da meta (15%)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Despesas/Receitas</td>
-                                    <td>81,88%</td>
-                                    <td><span class="text-emerald-600">Dentro do limite (85%)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Maior Categoria de Despesa</td>
-                                    <td>Equipe (50,29%)</td>
-                                    <td><span class="text-amber-600">Atenção - Alto percentual</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Despesas Pendentes</td>
-                                    <td>R$ 8.000,00 (11,49%)</td>
-                                    <td><span class="text-blue-600">Aguardando aprovação</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Nova Receita Modal -->
-    <div id="novaReceitaModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Nova Receita</h2>
-                <span class="close" onclick="closeModal('novaReceitaModal')">&times;</span>
-            </div>
-            <form id="novaReceitaForm">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="form-group">
-                        <label class="form-label">Descrição</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Fonte</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Valor Previsto (R$)</label>
-                        <input type="number" step="0.01" min="0" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Observações</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('novaReceitaModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Nova Despesa Modal -->
-    <div id="novaDespesaModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Nova Despesa</h2>
-                <span class="close" onclick="closeModal('novaDespesaModal')">&times;</span>
-            </div>
-            <form id="novaDespesaForm">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="form-group">
-                        <label class="form-label">Descrição</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Categoria</label>
-                        <select class="form-select" required>
-                            <option value="">Selecione uma categoria</option>
-                            <option value="equipe">Equipe</option>
-                            <option value="materiais">Materiais</option>
-                            <option value="viagens">Viagens</option>
-                            <option value="servicos">Serviços</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Valor Previsto (R$)</label>
-                        <input type="number" step="0.01" min="0" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Fornecedor</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Observações</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('novaDespesaModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Aprovar Despesa Modal -->
-    <div id="aprovarDespesaModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Aprovar Despesa: Segurança</h2>
-                <span class="close" onclick="closeModal('aprovarDespesaModal')">&times;</span>
-            </div>
-            <div class="card bg-gray-50 mb-4">
-                <h3 class="text-lg font-semibold mb-2">Detalhes da Despesa</h3>
-                <p><strong>Descrição:</strong> Segurança</p>
-                <p><strong>Categoria:</strong> Serviços</p>
-                <p><strong>Valor Previsto:</strong> R$ 8.000,00</p>
-                <p><strong>Fornecedor:</strong> Segurança Total Ltda.</p>
-                <p><strong>Data de Cadastro:</strong> 16/01/2023</p>
-                <p><strong>Status:</strong> <span class="badge badge-pending">Pendente</span></p>
-            </div>
-            <form id="aprovarDespesaForm">
-                <div class="form-group">
-                    <label class="form-label">Senha de Aprovação</label>
-                    <input type="password" class="form-control" required>
-                    <p class="text-sm text-gray-500 mt-1">Use a senha padrão: criativa123</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="form-group">
-                        <label class="form-label">Data Autorizada</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Forma de Pagamento</label>
-                        <select class="form-select" required>
-                            <option value="">Selecione</option>
-                            <option value="avista">À vista</option>
-                            <option value="parcelado">Parcelado</option>
-                            <option value="faturado">Faturado</option>
-                            <option value="pix">PIX</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Observações</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('aprovarDespesaModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Aprovar Despesa</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    
     <script>
-        // Database simulation
-        let db = {
-            eventos: [
-                { id: 1, nome: "Festival de Verão", dataInicio: "2023-07-15", dataFim: "2023-07-20", local: "Parque Municipal" },
-                { id: 2, nome: "Exposição Anual", dataInicio: "2023-09-10", dataFim: "2023-09-25", local: "Galeria Central" },
-                { id: 3, nome: "Série Workshops", dataInicio: "2023-03-05", dataFim: "2023-11-30", local: "Centro Cultural" },
-                { id: 4, nome: "Feiras Culturais", dataInicio: "2023-04-12", dataFim: "2023-04-15", local: "Praça Central" }
-            ],
-            orcamentos: [
-                { 
-                    id: 1, 
-                    nome: "Festival de Verão 2023", 
-                    eventoId: 1, 
-                    responsavel: "Ana Silva", 
-                    dataCriacao: "2023-01-15", 
-                    status: "aprovado",
-                    receitas: 85000,
-                    despesas: 69600,
-                    saldo: 15400
-                },
-                { 
-                    id: 2, 
-                    nome: "Exposição Arte Moderna", 
-                    eventoId: 2, 
-                    responsavel: "Carlos Mendes", 
-                    dataCriacao: "2023-02-03", 
-                    status: "elaboracao",
-                    receitas: 42000,
-                    despesas: 33250,
-                    saldo: 8750
-                },
-                { 
-                    id: 3, 
-                    nome: "Workshop de Dança", 
-                    eventoId: 3, 
-                    responsavel: "Juliana Costa", 
-                    dataCriacao: "2023-02-22", 
-                    status: "finalizado",
-                    receitas: 12500,
-                    despesas: 9300,
-                    saldo: 3200
-                },
-                { 
-                    id: 4, 
-                    nome: "Feira Gastronômica", 
-                    eventoId: 4, 
-                    responsavel: "Roberto Alves", 
-                    dataCriacao: "2023-03-10", 
-                    status: "elaboracao",
-                    receitas: 28000,
-                    despesas: 29800,
-                    saldo: -1800
-                }
-            ]
-        };
+        // --- CONFIGURAÇÃO ---
+        // IMPORTANTE: Verifique se esta URL é a mesma que a Render te deu!
+        const API_URL = 'https://sistema-criativa-orcamentos.onrender.com';
 
-        // Navigation
+        // --- FUNÇÕES PRINCIPAIS ---
+
+        // Função para buscar os orçamentos da API e mostrar na tabela
+        async function carregarOrcamentos() {
+            try {
+                const response = await fetch(`${API_URL}/api/orcamentos`);
+                const orcamentos = await response.json();
+                
+                const tableBody = document.getElementById('orcamentosTableBody');
+                tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados
+
+                if (orcamentos.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="8" class="text-center p-4">Nenhum orçamento encontrado. Clique em 'Novo Orçamento' para começar.</td></tr>`;
+                    return;
+                }
+                
+                orcamentos.forEach(orcamento => {
+                    const saldoClass = orcamento.saldo >= 0 ? 'text-emerald-600' : 'text-red-600';
+                    const statusClass = getStatusClass(orcamento.status);
+                    
+                    const row = `
+                        <tr>
+                            <td>${orcamento.id}</td>
+                            <td>${orcamento.nome}</td>
+                            <td>${orcamento.responsavel}</td>
+                            <td>${formatCurrency(orcamento.receitas)}</td>
+                            <td>${formatCurrency(orcamento.despesas)}</td>
+                            <td class="${saldoClass}">${formatCurrency(orcamento.saldo)}</td>
+                            <td><span class="badge ${statusClass}">${orcamento.status}</span></td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(${orcamento.id})">Ver</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+
+            } catch (error) {
+                console.error('Erro ao carregar orçamentos:', error);
+                const tableBody = document.getElementById('orcamentosTableBody');
+                tableBody.innerHTML = `<tr><td colspan="8" class="text-center p-4 text-red-500">Erro ao carregar dados do servidor. O backend está no ar?</td></tr>`;
+            }
+        }
+
+        // Função para criar um novo orçamento
+        async function criarNovoOrcamento(event) {
+            event.preventDefault();
+
+            const novoOrcamento = {
+                nome: document.getElementById('formNome').value,
+                responsavel: document.getElementById('formResponsavel').value,
+                status: document.getElementById('formStatus').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/api/orcamentos`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(novoOrcamento),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Falha ao criar orçamento');
+                }
+
+                alert('Orçamento criado com sucesso!');
+                closeModal('novoOrcamentoModal');
+                document.getElementById('novoOrcamentoForm').reset();
+                carregarOrcamentos(); 
+
+            } catch (error) {
+                console.error('Erro ao criar orçamento:', error);
+                alert('Erro ao criar orçamento. Tente novamente.');
+            }
+        }
+
+        // --- FUNÇÕES AUXILIARES ---
+        
+        function formatCurrency(value) {
+            if (typeof value !== 'number') value = 0;
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function getStatusClass(status) {
+            const classes = {
+                aprovado: 'badge-approved',
+                elaboracao: 'badge-pending',
+                finalizado: 'badge-completed',
+                cancelado: 'badge-canceled'
+            };
+            return classes[status] || 'badge-pending';
+        }
+
         function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
+            document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             document.getElementById(sectionId).classList.remove('hidden');
             document.querySelector(`.nav-item[onclick="showSection('${sectionId}')"]`).classList.add('active');
         }
 
-        // Modal functions
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
         }
@@ -1073,318 +341,19 @@
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
-
-        // Tab functions
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById(tabId + 'Tab').classList.add('active');
-            });
-        });
-
-        // View orçamento details
+        
         function viewOrcamento(id) {
-            // In a real app, we would fetch the orçamento details from the database
-            // For now, we'll just show the modal with sample data
-            openModal('detalhesOrcamentoModal');
+            alert('Visualizar detalhes do orçamento ID: ' + id + '\n(Esta função pode ser implementada depois)');
         }
 
-        // Edit evento
-        function editEvento(id) {
-            // In a real app, we would fetch the evento details and populate a form
-            alert('Editar evento ' + id);
-        }
+        // --- INICIALIZAÇÃO ---
 
-        // Form submissions
-        document.getElementById('novoOrcamentoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, we would save the data to the database
-            alert('Orçamento salvo com sucesso!');
-            closeModal('novoOrcamentoModal');
-        });
+        document.getElementById('novoOrcamentoForm').addEventListener('submit', criarNovoOrcamento);
 
-        document.getElementById('novoEventoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, we would save the data to the database
-            alert('Evento salvo com sucesso!');
-            closeModal('novoEventoModal');
-        });
-
-        document.getElementById('novaReceitaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, we would save the data to the database
-            alert('Receita salva com sucesso!');
-            closeModal('novaReceitaModal');
-        });
-
-        document.getElementById('novaDespesaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, we would save the data to the database
-            alert('Despesa salva com sucesso!');
-            closeModal('novaDespesaModal');
-        });
-
-        document.getElementById('aprovarDespesaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, we would validate the password and save the data
-            const password = this.querySelector('input[type="password"]').value;
-            if (password === 'criativa123') {
-                alert('Despesa aprovada com sucesso!');
-                closeModal('aprovarDespesaModal');
-            } else {
-                alert('Senha incorreta!');
-            }
-        });
-
-        // Charts
-        window.addEventListener('load', function() {
-            // Financial Chart
-            const financialCtx = document.getElementById('financialChart').getContext('2d');
-            const financialChart = new Chart(financialCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-                    datasets: [
-                        {
-                            label: 'Receitas',
-                            data: [65000, 85000, 42000, 28000, 56000, 72000],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true
-                        },
-                        {
-                            label: 'Despesas',
-                            data: [52000, 69600, 33250, 29800, 42000, 58000],
-                            borderColor: '#ef4444',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4,
-                            fill: true
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return 'R$ ' + value.toLocaleString('pt-BR');
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Expense Category Chart
-            const expenseCategoryCtx = document.getElementById('expenseCategoryChart').getContext('2d');
-            const expenseCategoryChart = new Chart(expenseCategoryCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Equipe', 'Materiais', 'Viagens', 'Serviços', 'Outros'],
-                    datasets: [{
-                        data: [35000, 15000, 6500, 13100, 0],
-                        backgroundColor: [
-                            '#6366f1',
-                            '#10b981',
-                            '#f59e0b',
-                            '#3b82f6',
-                            '#8b5cf6'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.raw;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = Math.round((value / total) * 100);
-                                    return `${label}: R$ ${value.toLocaleString('pt-BR')} (${percentage}%)`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Budget Status Chart
-            const budgetStatusCtx = document.getElementById('budgetStatusChart').getContext('2d');
-            const budgetStatusChart = new Chart(budgetStatusCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Em Elaboração', 'Aprovado', 'Finalizado', 'Cancelado'],
-                    datasets: [{
-                        label: 'Quantidade',
-                        data: [4, 6, 2, 0],
-                        backgroundColor: [
-                            '#f59e0b',
-                            '#10b981',
-                            '#3b82f6',
-                            '#ef4444'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Profit Margin Chart
-            const profitMarginCtx = document.getElementById('profitMarginChart').getContext('2d');
-            const profitMarginChart = new Chart(profitMarginCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Festival de Verão 2023', 'Exposição Arte Moderna', 'Workshop de Dança', 'Feira Gastronômica'],
-                    datasets: [{
-                        label: 'Margem de Lucro (%)',
-                        data: [18.12, 20.83, 25.60, -6.43],
-                        backgroundColor: function(context) {
-                            const value = context.dataset.data[context.dataIndex];
-                            return value < 0 ? '#ef4444' : '#10b981';
-                        }
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Despesas Distribuição Chart
-            const despesasDistribuicaoCtx = document.getElementById('despesasDistribuicaoChart').getContext('2d');
-            const despesasDistribuicaoChart = new Chart(despesasDistribuicaoCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Equipe', 'Materiais', 'Viagens', 'Serviços', 'Outros'],
-                    datasets: [{
-                        data: [35000, 15000, 6500, 13100, 0],
-                        backgroundColor: [
-                            '#6366f1',
-                            '#10b981',
-                            '#f59e0b',
-                            '#3b82f6',
-                            '#8b5cf6'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.raw;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = Math.round((value / total) * 100);
-                                    return `${label}: R$ ${value.toLocaleString('pt-BR')} (${percentage}%)`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Receitas vs Despesas Chart
-            const receitasDespesasCtx = document.getElementById('receitasDespesasChart').getContext('2d');
-            const receitasDespesasChart = new Chart(receitasDespesasCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Receitas', 'Despesas', 'Saldo'],
-                    datasets: [{
-                        label: 'Valor (R$)',
-                        data: [85000, 69600, 15400],
-                        backgroundColor: [
-                            '#10b981',
-                            '#ef4444',
-                            '#3b82f6'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return 'R$ ' + value.toLocaleString('pt-BR');
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        });
-
-        // Close modals when clicking outside
-        window.addEventListener('click', function(event) {
-            document.querySelectorAll('.modal').forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
-
-        // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
             showSection('dashboard');
+            carregarOrcamentos();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'960aeea946d3a529',t:'MTc1Mjc2NzgxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
