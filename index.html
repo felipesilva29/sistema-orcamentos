@@ -3,357 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Orçamentos - Criativa Mais Cultura</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Sistema de Análise e Acompanhamento de Orçamentos - Criativa Mais Cultura</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
         }
-        .sidebar {
-            background-color: #6366f1;
+        header {
+            background-color: #007bff;
             color: white;
-            height: 100vh;
-            position: fixed;
-            width: 250px;
-        }
-        .content {
-            margin-left: 250px;
             padding: 20px;
-        }
-        .nav-item {
-            padding: 12px 20px;
-            border-radius: 4px;
-            margin: 4px 0;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .nav-item:hover, .nav-item.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .card {
-            background-color: white;
+            text-align: center;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            padding: 20px;
-            margin-bottom: 20px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        th {
-            background-color: #f9fafb;
-            font-weight: 600;
-        }
-        tr:hover {
-            background-color: #f9fafb;
-        }
-        .btn {
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-primary {
-            background-color: #6366f1;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #4f46e5;
-        }
-        .btn-secondary {
-            background-color: #e5e7eb;
-            color: #374151;
-        }
-        .btn-secondary:hover {
-            background-color: #d1d5db;
-        }
-        .badge {
-            padding: 4px 8px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .badge-pending {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-        .badge-approved {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-        .badge-completed {
-            background-color: #dbeafe;
-            color: #1e40af;
-        }
-        .badge-canceled {
-            background-color: #fee2e2;
-            color: #b91c1c;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
+        .container {
             max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+        h1, h2 {
+            color: #007bff;
         }
-        .form-group {
-            margin-bottom: 15px;
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+        a.button {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
         }
-        .form-control {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
+        a.button:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="p-4">
-            <h1 class="text-xl font-bold mb-6">Criativa Mais Cultura</h1>
-            <div class="nav-item active" onclick="showSection('dashboard')">Dashboard</div>
-            <div class="nav-item" onclick="showSection('orcamentos')">Orçamentos</div>
-            <div class="nav-item" onclick="showSection('eventos')">Eventos</div>
-            <div class="nav-item" onclick="showSection('relatorios')">Relatórios</div>
-        </div>
-    </div>
-
-    <div class="content">
-        <div id="dashboard" class="section">
-             <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
-             </div>
-
-        <div id="orcamentos" class="section hidden">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Orçamentos</h2>
-                <button class="btn btn-primary" onclick="openModal('novoOrcamentoModal')">Novo Orçamento</button>
-            </div>
-            <div class="card mb-6">
-                <div class="overflow-x-auto">
-                    <table id="orcamentosTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome do Orçamento</th>
-                                <th>Responsável</th>
-                                <th>Receitas</th>
-                                <th>Despesas</th>
-                                <th>Saldo</th>
-                                <th>Status</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="orcamentosTableBody">
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div id="eventos" class="section hidden">
-            <h2 class="text-2xl font-bold mb-6">Eventos</h2>
-            </div>
-        <div id="relatorios" class="section hidden">
-            <h2 class="text-2xl font-bold mb-6">Relatórios</h2>
-            </div>
-    </div>
-
-    <div id="novoOrcamentoModal" class="modal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Novo Orçamento</h2>
-                <span class="close" onclick="closeModal('novoOrcamentoModal')">&times;</span>
-            </div>
-            <form id="novoOrcamentoForm">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="form-group">
-                        <label class="form-label">Nome do Orçamento</label>
-                        <input type="text" id="formNome" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Responsável</label>
-                        <input type="text" id="formResponsavel" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Status</label>
-                        <select id="formStatus" class="form-control" required>
-                            <option value="elaboracao">Em Elaboração</option>
-                            <option value="aprovado">Aprovado</option>
-                            <option value="finalizado">Finalizado</option>
-                            <option value="cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex justify-end mt-4">
-                    <button type="button" class="btn btn-secondary mr-2" onclick="closeModal('novoOrcamentoModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
-        </div>
+    <header>
+        <h1>Sistema de Análise e Acompanhamento de Orçamentos</h1>
+        <p>Criativa Mais Cultura - Gestão Eficiente de Eventos</p>
+    </header>
+    
+    <div class="container">
+        <h2>Descrição do Sistema</h2>
+        <p>Este sistema foi desenvolvido para ajudar na análise e acompanhamento de orçamentos de eventos. Ele permite criar orçamentos, adicionar previsões de receitas e despesas, aprovar itens individualmente e calcular totais/saldos automaticamente.</p>
+        
+        <h2>Funcionalidades Principais</h2>
+        <ul>
+            <li>Cadastro de eventos e orçamentos vinculados.</li>
+            <li>Adição de receitas e despesas com fluxo de aprovação (Pendente → Aprovado → Lançado).</li>
+            <li>Cálculos de total de receitas, despesas, saldo e margem de lucro.</li>
+            <li>Filtros de busca por evento, data e status.</li>
+            <li>Interface moderna e simples, sem login (senha "criativa123" para aprovações).</li>
+            <li>Gráficos básicos para visualização de dados.</li>
+        </ul>
+        
+        <h2>Como Usar</h2>
+        <p>Acesse a aplicação interativa clicando no botão abaixo. Lá, você pode criar e gerenciar orçamentos em tempo real.</p>
+        
+        <a href="https://sua-url-do-render.onrender.com" class="button" target="_blank">Acessar o Sistema Interativo</a>
+        <p>(Substitua o link acima pela URL real da sua app Streamlit no Render.)</p>
+        
+        <h2>Tecnologias Usadas</h2>
+        <p>Desenvolvido em Python com Streamlit, Pandas e SQLite. Deploy no Render para acesso online.</p>
     </div>
     
-    <script>
-        // --- CONFIGURAÇÃO ---
-        // IMPORTANTE: Verifique se esta URL é a mesma que a Render te deu!
-        const API_URL = 'https://sistema-criativa-orcamentos.onrender.com';
-
-        // --- FUNÇÕES PRINCIPAIS ---
-
-        // Função para buscar os orçamentos da API e mostrar na tabela
-        async function carregarOrcamentos() {
-            try {
-                const response = await fetch(`${API_URL}/api/orcamentos`);
-                const orcamentos = await response.json();
-                
-                const tableBody = document.getElementById('orcamentosTableBody');
-                tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados
-
-                if (orcamentos.length === 0) {
-                    tableBody.innerHTML = `<tr><td colspan="8" class="text-center p-4">Nenhum orçamento encontrado. Clique em 'Novo Orçamento' para começar.</td></tr>`;
-                    return;
-                }
-                
-                orcamentos.forEach(orcamento => {
-                    const saldoClass = orcamento.saldo >= 0 ? 'text-emerald-600' : 'text-red-600';
-                    const statusClass = getStatusClass(orcamento.status);
-                    
-                    const row = `
-                        <tr>
-                            <td>${orcamento.id}</td>
-                            <td>${orcamento.nome}</td>
-                            <td>${orcamento.responsavel}</td>
-                            <td>${formatCurrency(orcamento.receitas)}</td>
-                            <td>${formatCurrency(orcamento.despesas)}</td>
-                            <td class="${saldoClass}">${formatCurrency(orcamento.saldo)}</td>
-                            <td><span class="badge ${statusClass}">${orcamento.status}</span></td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm" onclick="viewOrcamento(${orcamento.id})">Ver</button>
-                            </td>
-                        </tr>
-                    `;
-                    tableBody.innerHTML += row;
-                });
-
-            } catch (error) {
-                console.error('Erro ao carregar orçamentos:', error);
-                const tableBody = document.getElementById('orcamentosTableBody');
-                tableBody.innerHTML = `<tr><td colspan="8" class="text-center p-4 text-red-500">Erro ao carregar dados do servidor. O backend está no ar?</td></tr>`;
-            }
-        }
-
-        // Função para criar um novo orçamento
-        async function criarNovoOrcamento(event) {
-            event.preventDefault();
-
-            const novoOrcamento = {
-                nome: document.getElementById('formNome').value,
-                responsavel: document.getElementById('formResponsavel').value,
-                status: document.getElementById('formStatus').value
-            };
-
-            try {
-                const response = await fetch(`${API_URL}/api/orcamentos`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(novoOrcamento),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Falha ao criar orçamento');
-                }
-
-                alert('Orçamento criado com sucesso!');
-                closeModal('novoOrcamentoModal');
-                document.getElementById('novoOrcamentoForm').reset();
-                carregarOrcamentos(); 
-
-            } catch (error) {
-                console.error('Erro ao criar orçamento:', error);
-                alert('Erro ao criar orçamento. Tente novamente.');
-            }
-        }
-
-        // --- FUNÇÕES AUXILIARES ---
-        
-        function formatCurrency(value) {
-            if (typeof value !== 'number') value = 0;
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-        function getStatusClass(status) {
-            const classes = {
-                aprovado: 'badge-approved',
-                elaboracao: 'badge-pending',
-                finalizado: 'badge-completed',
-                cancelado: 'badge-canceled'
-            };
-            return classes[status] || 'badge-pending';
-        }
-
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.getElementById(sectionId).classList.remove('hidden');
-            document.querySelector(`.nav-item[onclick="showSection('${sectionId}')"]`).classList.add('active');
-        }
-
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-        
-        function viewOrcamento(id) {
-            alert('Visualizar detalhes do orçamento ID: ' + id + '\n(Esta função pode ser implementada depois)');
-        }
-
-        // --- INICIALIZAÇÃO ---
-
-        document.getElementById('novoOrcamentoForm').addEventListener('submit', criarNovoOrcamento);
-
-        document.addEventListener('DOMContentLoaded', function() {
-            showSection('dashboard');
-            carregarOrcamentos();
-        });
-    </script>
+    <footer>
+        <p>&copy; 2023 Criativa Mais Cultura. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
