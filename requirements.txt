@@ -1,4 +1,5 @@
-Flask
-Flask-SQLAlchemy
-Flask-Cors
-gunicorn
+streamlit
+
+pandas
+
+sqlite3
