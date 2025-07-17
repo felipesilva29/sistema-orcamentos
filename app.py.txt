@@ -1,0 +1,99 @@
+import os
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+
+# --- CONFIGURAÇÃO INICIAL ---
+
+# Cria a aplicação Flask
+app = Flask(__name__)
+
+# Permite que o frontend (seu index.html) converse com este backend
+CORS(app)
+
+# Configuração do Banco de Dados
+# Define o caminho do arquivo do banco de dados. Ele será criado na mesma pasta do projeto.
+basedir = os.path.abspath(os.path.dirname(__file__))
+# Usa um banco de dados SQLite, que é um arquivo simples (orcamentos.db). Ideal para começar.
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'orcamentos.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Inicializa a extensão do banco de dados
+db = SQLAlchemy(app)
+
+
+# --- MODELOS DO BANCO DE DADOS (A estrutura das nossas "gavetas") ---
+
+# Modelo para a tabela de Orçamentos
+class Orcamento(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(150), nullable=False)
+    responsavel = db.Column(db.String(100))
+    status = db.Column(db.String(50), default='elaboracao')
+    receitas = db.Column(db.Float, default=0)
+    despesas = db.Column(db.Float, default=0)
+
+    # Função para transformar o objeto em um dicionário (útil para a API)
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'responsavel': self.responsavel,
+            'status': self.status,
+            'receitas': self.receitas,
+            'despesas': self.despesas,
+            'saldo': self.receitas - self.despesas
+        }
+
+# --- API (A "porta dos fundos" para o frontend) ---
+
+# Rota para LISTAR todos os orçamentos e CRIAR um novo orçamento
+@app.route('/api/orcamentos', methods=['GET', 'POST'])
+def gerenciar_orcamentos():
+    # Se a requisição for do tipo GET (pedindo dados)
+    if request.method == 'GET':
+        orcamentos = Orcamento.query.all()
+        # Transforma a lista de orçamentos em uma lista de dicionários
+        lista_orcamentos = [orcamento.to_dict() for orcamento in orcamentos]
+        return jsonify(lista_orcamentos)
+
+    # Se a requisição for do tipo POST (enviando dados para criar)
+    if request.method == 'POST':
+        # Pega os dados JSON enviados pelo frontend
+        dados = request.json
+        
+        # Cria um novo objeto Orcamento com os dados recebidos
+        novo_orcamento = Orcamento(
+            nome=dados.get('nome'),
+            responsavel=dados.get('responsavel'),
+            status=dados.get('status', 'elaboracao')
+        )
+        
+        # Adiciona ao banco de dados e salva
+        db.session.add(novo_orcamento)
+        db.session.commit()
+        
+        # Retorna o orçamento recém-criado como confirmação
+        return jsonify(novo_orcamento.to_dict()), 201 # 201 significa "Criado com sucesso"
+
+# Rota para pegar, atualizar ou deletar UM orçamento específico
+@app.route('/api/orcamentos/<int:id>', methods=['GET', 'PUT', 'DELETE'])
+def gerenciar_orcamento_unico(id):
+    orcamento = Orcamento.query.get_or_404(id)
+
+    if request.method == 'GET':
+        return jsonify(orcamento.to_dict())
+    
+    # Adicionaremos a lógica de PUT (atualizar) e DELETE (deletar) depois
+
+# --- INICIALIZAÇÃO ---
+
+# Comando para criar o banco de dados pela primeira vez
+with app.app_context():
+    db.create_all()
+
+# Bloco para rodar o servidor de desenvolvimento (para testes)
+if __name__ == '__main__':
+    # O host='0.0.0.0' permite que a aplicação seja acessível na sua rede
+    # A porta pode ser qualquer uma, 5000 é um padrão comum.
+    app.run(host='0.0.0.0', port=5000, debug=True)
